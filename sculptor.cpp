@@ -13,14 +13,6 @@
 #include <fstream>
 #include <math.h>
 
-
-/**
- * @brief Construct a new Sculptor:: Sculptor object
- * 
- * @param _nx 
- * @param _ny 
- * @param _nz 
- */
 Sculptor::Sculptor(int _nx, int _ny, int _nz) {
     nx = _nx;
     ny = _ny;
@@ -45,24 +37,12 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz) {
     }
 }
 
-/**
- * @brief Destroy the Sculptor:: Sculptor object
- * 
- */
 Sculptor::~Sculptor(){
     delete v[0][0];
     delete v[0];
     delete v;
 }
 
-/**
- * @brief 
- * 
- * @param r 
- * @param g 
- * @param b 
- * @param alpha 
- */
 void Sculptor::setColor(float r, float g, float b, float alpha){
     if(r >= 0 && r <= 1)
         this -> r = r;
@@ -74,13 +54,6 @@ void Sculptor::setColor(float r, float g, float b, float alpha){
         a = alpha;
 }
 
-/**
- * @brief 
- * 
- * @param x 
- * @param y 
- * @param z 
- */
 void Sculptor::putVoxel(int x, int y, int z){
     v[x][y][z].r = r;
     v[x][y][z].g = g;
@@ -89,27 +62,10 @@ void Sculptor::putVoxel(int x, int y, int z){
     v[x][y][z].isOn = true;
 }
 
-/**
- * @brief 
- * 
- * @param x 
- * @param y 
- * @param z 
- */
 void Sculptor::cutVoxel(int x, int y, int z){
     v[x][y][z].isOn = false;
 }
 
-/**
- * @brief 
- * 
- * @param x0 
- * @param x1 
- * @param y0 
- * @param y1 
- * @param z0 
- * @param z1 
- */
 void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
     for(int x = x0; x < x1; x++){
         for(int y = y0; y < y1; y++){
@@ -120,16 +76,6 @@ void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
     }
 }
 
-/**
- * @brief 
- * 
- * @param x0 
- * @param x1 
- * @param y0 
- * @param y1 
- * @param z0 
- * @param z1 
- */
 void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
     for(int x = x0; x < x1; x++){
         for(int y = y0; y < y1; y++){
@@ -140,14 +86,6 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
     }
 }
 
-/**
- * @brief 
- * 
- * @param xcenter 
- * @param ycenter 
- * @param zcenter 
- * @param radius 
- */
 void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
     float calcX, calcY, calcZ;
     for(int x = 0; x < nx; x++){
@@ -163,14 +101,6 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
     }
 }
 
-/**
- * @brief 
- * 
- * @param xcenter 
- * @param ycenter 
- * @param zcenter 
- * @param radius 
- */
 void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
     float calcX, calcY, calcZ;
     for(int x = 0; x < nx; x++){
@@ -186,16 +116,6 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
     }
 }
 
-/**
- * @brief 
- * 
- * @param xcenter 
- * @param ycenter 
- * @param zcenter 
- * @param rx 
- * @param ry 
- * @param rz 
- */
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
     float calcX, calcY, calcZ;
     for(int x = 0; x < nx; x++){
@@ -211,16 +131,6 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
     }
 }
 
-/**
- * @brief 
- * 
- * @param xcenter 
- * @param ycenter 
- * @param zcenter 
- * @param rx 
- * @param ry 
- * @param rz 
- */
 void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
     float calcX, calcY, calcZ;
     for(int x = 0; x < nx; x++){
@@ -236,11 +146,6 @@ void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
     }
 }
 
-/**
- * @brief 
- * 
- * @param filename 
- */
 void Sculptor::writeOFF(const char* filename){
     std::ofstream file;
 
