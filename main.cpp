@@ -17,34 +17,28 @@ using namespace std;
 
 int main(){
     
-    Sculptor narutin(101,101,101);
-
-    narutin.setColor(1.0,0.0,0.5,1.0);
-
-    narutin.putSphere(50,95,50,6);
+    Sculptor teste(101,101,101);
     
-    
-    narutin.writeOFF("Visao3D.off");
+    teste.setColor(1.0,0.0,0.0,1.0);
+
+    teste.putEllipsoid(50,90,50,5,10,5);
+    teste.cutEllipsoid(50,90,50,4,9,4);
+    teste.putSphere(50,70,50,9);
+    teste.cutSphere(50,70,50,8);
+    teste.putBox(40,60,40,60,40,60);
+    teste.cutBox(41,59,41,59,41,59);
+
+    teste.cutBox(50,101,0,101,50,101);
+
+    teste.setColor(0.0,1.0,0.0,1.0);
+
+    teste.putVoxel(1,1,1);
+    teste.putVoxel(2,2,2);
+    teste.putVoxel(3,3,3);
+    teste.putVoxel(4,4,4);
+
+    teste.cutVoxel(2,2,2);
+    teste.cutVoxel(3,3,3);
+
+    teste.writeOFF("Visao3D.off");
 }
-
-/*teste.putSphere(10,10,10,10);
-    teste.setColor(1.0,1.0,1.0,1.0);
-    teste.putSphere(10,10,10,9);
-    teste.cutSphere(10,10,10,8);
-    teste.cutBox(0,21,0,21,0,6);
-
-    teste.setColor(0.0,0.5,1.0,1.0);
-    for(int x = 1; x < 16; x++){
-        for(int y = 1; y < 16; y++){
-            for(int z = 1; z < 16; z++){
-                if(x == y && z == y){
-                    teste.putVoxel(x,y,z-1);
-                    teste.putVoxel(x-1,y,z);
-                    teste.putVoxel(x,y,z);
-                    teste.putVoxel(x+1,y,z);
-                    teste.putVoxel(x,y,z+1);
-                }
-            }       
-        }
-    }
-    teste.putVoxel(1,0,1);*/
